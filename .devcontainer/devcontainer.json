@@ -1,0 +1,27 @@
+{
+  "name": "open-notebook-dev",
+  "dockerComposeFile": ".devcontainer/docker-compose.dev.yml",
+  "service": "dev",
+  "workspaceFolder": "/workspaces/open-notebook",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "forwardPorts": [8502, 5055, 8000],
+  "runArgs": ["--cpus=4", "--memory=6g"],
+  "remoteEnv": {
+    "PYTHONUNBUFFERED": "1"
+  },
+  "postCreateCommand": "make start-all || true",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      },
+      "extensions": [
+        "ms-python.python",
+        "ms-azuretools.vscode-docker",
+        "ms-vscode.vscode-node-azure-pack"
+      ]
+    }
+  }
+}
