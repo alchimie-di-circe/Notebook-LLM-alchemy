@@ -1,0 +1,32 @@
+services:
+  dev:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    volumes:
+      - ..:/workspaces/open-notebook:cached
+      - notebook_data:/app/data
+      - surreal_data:/mydata
+      - devcontainer_pip:/usr/local/lib/python3.11/site-packages
+      - devcontainer_node:/usr/local/lib/node_modules
+    environment:
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      API_URL: http://localhost:5055
+      SURREAL_URL: ws://localhost:8000/rpc
+      SURREAL_USER: root
+      SURREAL_PASSWORD: root
+      SURREAL_NAMESPACE: open_notebook
+      SURREAL_DATABASE: production
+      NODE_ENV: development
+    ports:
+      - "127.0.0.1:8502:8502"
+      - "127.0.0.1:5055:5055"
+      - "127.0.0.1:8000:8000"
+    user: "1000:1000"
+    # privileged: true # This line should be removed for better security.
+    restart: unless-stopped
+volumes:
+  notebook_data:
+  surreal_data:
+  devcontainer_pip:
+  devcontainer_node:
