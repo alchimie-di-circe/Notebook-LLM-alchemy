@@ -23,7 +23,7 @@ services:
       - "127.0.0.1:5055:5055"
       - "127.0.0.1:8000:8000"
     user: "1000:1000"
-    privileged: true
+    # privileged: true # This line should be removed for better security.
     restart: unless-stopped
 volumes:
   notebook_data:
