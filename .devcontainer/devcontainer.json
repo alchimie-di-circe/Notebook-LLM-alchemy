@@ -1,0 +1,72 @@
+{
+    "name": "Notebook-LLM-alchemy_1",
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",  // Any generic, debian-based image.
+    "dockerComposeFile": ".devcontainer/docker-compose.dev.yml",
+    "service": "dev",
+    "workspaceFolder": "/workspaces/open-notebook",
+    "features": {
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {
+            "version": "latest",
+            "moby": true
+        },
+        "ghcr.io/flexwie/devcontainer-features/op:1": {},
+        "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+            "version": "latest",
+            "moby": true,
+            "mobyBuildxVersion": "latest",
+            "dockerDashComposeVersion": "v2",
+            "installDockerBuildx": true,
+            "installDockerComposeSwitch": true
+        },
+        "ghcr.io/devcontainers-extra/features/beehive:1": {
+            "version": "latest"
+        },
+        "ghcr.io/devcontainers-extra/features/vercel-cli:1": {
+            "version": "latest"
+        },
+        "ghcr.io/devcontainers-extra/features/claude-code:1": {
+            "version": "latest"
+        },
+        "ghcr.io/devcontainers-extra/features/snyk-cli:1": {
+            "version": "latest"
+        },
+        "ghcr.io/sonikro/devcontainer-features/semgrep:1": {
+            "semgrep_version": "1.14.0"
+        },
+        "ghcr.io/devcontainers-extra/features/direnv:1": {
+            "version": "latest"
+        },
+        "ghcr.io/devcontainers-extra/features/yamllint:2": {
+            "version": "latest"
+        },
+        "ghcr.io/lentzi90/features/yamlfmt:0": {
+            "version": "v0.14.0"
+        },
+        "ghcr.io/devcontainer-community/devcontainer-features/opencode.ai:1": {
+            "version": "latest"
+        },
+        "ghcr.io/devcontainers-extra/features/codename-goose-cli:1": {
+            "version": "stable"
+        },
+        "ghcr.io/devcontainers-extra/features/cloudinary-cli:1": {
+            "version": "latest"
+        },
+    "forwardPorts": [8502, 5055, 8000],
+    "runArgs": ["--cpus=4", "--memory=6g"],
+    "remoteEnv": {
+      "PYTHONUNBUFFERED": "1"
+    },
+    "postCreateCommand": "make start-all || true",
+    "customizations": {
+      "vscode": {
+        "settings": {
+          "terminal.integrated.defaultProfile.linux": "bash"
+      },
+      "extensions": [
+        "ms-python.python",
+        "ms-azuretools.vscode-docker",
+        "ms-vscode.vscode-node-azure-pack"
+      ]
+    }
+  }
+}      
