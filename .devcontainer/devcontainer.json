@@ -11,7 +11,7 @@
   "remoteEnv": {
     "PYTHONUNBUFFERED": "1"
   },
-  "postCreateCommand": "make start-all || true",
+  "postCreateCommand": "make start-all",
   "customizations": {
     "vscode": {
       "settings": {
